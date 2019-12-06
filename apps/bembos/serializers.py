@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Orders, Supplies, Role, OrderDetail #de mi app llamo los modelos
+from .models import Orders, Supplies, Role, OrderDetail, Category #de mi app llamo los modelos
 
 class RoleSerializer(serializers.ModelSerializer):
     class Meta: 
@@ -22,4 +22,9 @@ class OrdersSerializer(serializers.ModelSerializer):
 class OrderDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderDetail
+        fields = '__all__'
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
         fields = '__all__'
