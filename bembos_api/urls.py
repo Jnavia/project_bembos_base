@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from apps.bembos.url import router
+from apps.bembos.urls import router
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView #una para obtener el token y otra para refrescarlo
 
 urlpatterns = [

@@ -7,9 +7,9 @@ For more information on this file, see
 https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/
 """
 
-#import os
-from dotenv import load_dotenv
-from pathlib import Path
+import os
+# from dotenv import load_dotenv
+# from pathlib import Path
 
 from django.core.wsgi import get_wsgi_application
 
