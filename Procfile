@@ -1,0 +1,1 @@
+web: gunicorn bembos_api.wsgi
