@@ -25,11 +25,10 @@ urlpatterns = [
 
     # path('', include('apps.bembos.urls')),
 
-    path('api/',include(router.urls))
+    path('api/',include(router.urls)),
 
-    # path('api-auth', include('rest_framework.urls')), #para crear el login y no depender del admin
-    
-    #path('api/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    #path('api/refresh', TokenRefreshView.as_view(), name='token_refresh') #probarlo en postman 
+    path('api-auth', include('rest_framework.urls')), #para crear el login y no depender del admin
+    path('api/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/refresh', TokenRefreshView.as_view(), name='token_refresh') #probarlo en postman 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
