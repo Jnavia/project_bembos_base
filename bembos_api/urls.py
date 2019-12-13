@@ -11,24 +11,24 @@ Class-based views
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('bembos/', include('bembos.urls'))
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from apps.bembos.urls import router
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView #una para obtener el token y otra para refrescarlo
+from apps.orders.url import router
+from rest_framework.authtoken import views
+from apps.orders.views import Login,Logout
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title='Bembos API Documentation')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    # path('', include('apps.bembos.urls')),
-
     path('api/',include(router.urls)),
-
-    path('api-auth', include('rest_framework.urls')), #para crear el login y no depender del admin
-    path('api/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/refresh', TokenRefreshView.as_view(), name='token_refresh') #probarlo en postman 
-
+    path('api_documentation/', schema_view),
+    path('api_token',views.obtain_auth_token),
+    path('login/',Login.as_view(), name = 'login'),
+    path('logout/', Logout.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
